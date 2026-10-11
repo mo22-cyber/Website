@@ -1,19 +1,82 @@
-/* MUP Trading — small enhancements: scroll reveals, header state, form validation. */
+/* MUP Trading — mobile menu, scroll reveals, header state, form validation. */
 (function () {
   "use strict";
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var hasIO = "IntersectionObserver" in window;
+
+  /* ----- Mobile menu ----- */
+
+  var header = document.querySelector(".site-header");
+  var toggle = document.querySelector(".menu-toggle");
+
+  function setMenu(open) {
+    header.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+  }
+
+  if (header && toggle) {
+    toggle.addEventListener("click", function () {
+      setMenu(toggle.getAttribute("aria-expanded") !== "true");
+    });
+    header.querySelectorAll(".site-nav a").forEach(function (link) {
+      link.addEventListener("click", function () { setMenu(false); });
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && header.classList.contains("is-open")) {
+        setMenu(false);
+        toggle.focus();
+      }
+    });
+    window.matchMedia("(min-width: 820px)").addEventListener("change", function (mq) {
+      if (mq.matches) setMenu(false);
+    });
+  }
+
+  /* ----- Header hairline once the page is scrolled ----- */
+
+  if (header && hasIO) {
+    var sentinel = document.createElement("div");
+    sentinel.setAttribute("aria-hidden", "true");
+    sentinel.style.cssText = "position:absolute;top:0;left:0;width:1px;height:8px;pointer-events:none;";
+    document.body.prepend(sentinel);
+    new IntersectionObserver(function (entries) {
+      header.classList.toggle("is-scrolled", !entries[0].isIntersecting);
+    }).observe(sentinel);
+  }
+
+  /* ----- Statement: split into words for the scroll-linked brightening ----- */
+
+  var statement = document.querySelector("[data-words]");
+  var scrollTimeline = window.CSS && CSS.supports && CSS.supports("animation-timeline: view()");
+
+  if (statement && scrollTimeline && !reduceMotion) {
+    var words = statement.textContent.trim().split(/\s+/);
+    var full = document.createElement("span");
+    full.className = "sr-only";
+    full.textContent = statement.textContent.trim();
+    statement.textContent = "";
+    statement.appendChild(full);
+    words.forEach(function (word, i) {
+      var span = document.createElement("span");
+      span.className = "sw";
+      span.setAttribute("aria-hidden", "true");
+      span.textContent = word;
+      statement.appendChild(span);
+      if (i < words.length - 1) statement.appendChild(document.createTextNode(" "));
+    });
+  }
 
   /* ----- Scroll reveals ----- */
 
-  // Single elements that fade up on their own
   var singles = document.querySelectorAll(
-    ".section__title, .section__note, .statement, .contact__intro, .form"
+    ".kicker, .h2, .label, .details__note, .register, .contact__title, .contact__text, .contact__details, .form"
   );
-  // Groups whose items fade up one after another
-  var groups = document.querySelectorAll(".rows, .supply, .steps, .facts");
+  var groups = document.querySelectorAll(".services, .steps, .register__list");
 
   singles.forEach(function (el) { el.setAttribute("data-reveal", ""); });
+  if (statement && !(scrollTimeline && !reduceMotion)) statement.setAttribute("data-reveal", "");
+
   groups.forEach(function (group) {
     Array.prototype.forEach.call(group.children, function (item, i) {
       item.setAttribute("data-reveal", "");
@@ -23,7 +86,7 @@
 
   var targets = document.querySelectorAll("[data-reveal]");
 
-  if (reduceMotion || !("IntersectionObserver" in window)) {
+  if (reduceMotion || !hasIO) {
     targets.forEach(function (el) { el.classList.add("is-visible"); });
   } else {
     var revealer = new IntersectionObserver(function (entries) {
@@ -33,22 +96,9 @@
           revealer.unobserve(entry.target);
         }
       });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.15 });
+    }, { rootMargin: "0px 0px -10% 0px", threshold: 0.12 });
 
     targets.forEach(function (el) { revealer.observe(el); });
-  }
-
-  /* ----- Header hairline once the page is scrolled ----- */
-
-  var header = document.querySelector(".site-header");
-  if (header && "IntersectionObserver" in window) {
-    var sentinel = document.createElement("div");
-    sentinel.setAttribute("aria-hidden", "true");
-    sentinel.style.cssText = "position:absolute;top:0;left:0;width:1px;height:8px;";
-    document.body.prepend(sentinel);
-    new IntersectionObserver(function (entries) {
-      header.classList.toggle("is-scrolled", !entries[0].isIntersecting);
-    }).observe(sentinel);
   }
 
   /* ----- Contact form validation ----- */
@@ -81,9 +131,7 @@
   };
 
   function validateField(field) {
-    var rule = rules[field.name];
-    if (!rule) return true;
-    var message = rule(field.value.trim());
+    var message = rules[field.name](field.value.trim());
     var error = document.getElementById(field.id + "-error");
     if (message) {
       field.setAttribute("aria-invalid", "true");

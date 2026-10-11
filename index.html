@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MUP Trading | Pharmaceutical import, registration and distribution in Egypt</title>
   <meta name="description" content="MUP Trading is a Giza-based pharmaceutical trading company. We import, register and distribute pharmaceutical and healthcare products for manufacturers, pharmacies and hospitals across Egypt.">
-  <meta name="theme-color" content="#3E8A93">
+  <meta name="theme-color" content="#0A1517">
+  <meta name="color-scheme" content="dark light">
 
-  <!-- Open Graph. Replace [SITE URL] with the live domain, e.g. https://www.muptrading.com -->
+  <!-- Open Graph. Replace [SITE URL] with the live domain, e.g. https://www.example.com -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="MUP Trading">
   <meta property="og:title" content="MUP Trading | Medicines, registered and delivered across Egypt">
@@ -24,7 +25,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400..500&display=swap">
   <link rel="stylesheet" href="styles.css">
   <script>document.documentElement.classList.add("js");</script>
   <script src="main.js" defer></script>
@@ -36,68 +37,105 @@
     <div class="container site-header__inner">
       <a class="brand" href="#top" aria-label="MUP Trading, back to top">
         <span class="mark" aria-hidden="true">
-          <span class="mark__face">
-            <span class="mark__mup">MUP</span>
-            <span class="mark__trading">Trading</span>
-          </span>
+          <span class="mark__face"><span class="mark__mup">MUP</span><span class="mark__trading">Trading</span></span>
         </span>
         <span class="brand__name">MUP Trading</span>
       </a>
-      <nav class="site-nav" aria-label="Main">
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="menu-toggle__label">Menu</span>
+        <span class="menu-toggle__icon" aria-hidden="true"><span></span><span></span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
         <ul>
           <li><a href="#services">Services</a></li>
           <li><a href="#products">Products</a></li>
           <li><a href="#company">Company</a></li>
-          <li><a class="button button--small" href="#contact">Contact us</a></li>
+          <li class="site-nav__cta"><a class="btn btn--accent btn--small" href="#contact">Contact us</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <!-- Hero: the logo enlarged into a stage -->
+
+    <!-- ===== Hero ===== -->
     <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="container">
-        <div class="hero__stage">
-          <div class="hero__oval">
-            <div class="hero__content">
-              <h1 id="hero-title">Medicines, registered and delivered across Egypt.</h1>
-              <p class="hero__sub">We import, register and distribute pharmaceutical and healthcare products for manufacturers, pharmacies and hospitals.</p>
-              <a class="button" href="#contact">Start a partnership</a>
+      <div class="hero__backdrop" aria-hidden="true"></div>
+
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <h1 class="hero__title" id="hero-title">
+            <span class="word"><span>Medicines,</span></span>
+            <span class="word"><span>registered</span></span>
+            <span class="word"><span>and</span></span>
+            <span class="word"><span>delivered</span></span>
+            <span class="word"><span>across</span></span>
+            <span class="word"><span>Egypt<span class="accent-dot">.</span></span></span>
+          </h1>
+          <p class="hero__sub">We import, register and distribute pharmaceutical and healthcare products for manufacturers, pharmacies and hospitals.</p>
+          <div class="hero__actions">
+            <a class="btn btn--accent" href="#contact">Start a partnership</a>
+          </div>
+        </div>
+
+        <div class="emblem" aria-hidden="true">
+          <div class="emblem__halo"></div>
+          <div class="emblem__orbit"><span class="emblem__satellite"></span></div>
+          <div class="emblem__tile">
+            <div class="emblem__face">
+              <span class="emblem__mup">MUP</span>
+              <span class="emblem__trading">Trading</span>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <section class="section" id="company" aria-labelledby="about-title">
-      <div class="container split">
-        <h2 class="section__title" id="about-title">Who we are</h2>
-        <p class="statement">MUP Trading is a Giza-based joint stock company, founded in 2025 to give quality medicines a clear, compliant route to Egyptian patients — from the manufacturer’s dock to the pharmacy shelf.</p>
+      <div class="container">
+        <dl class="hero__facts">
+          <div><dt>Headquarters</dt><dd>Giza, Egypt</dd></div>
+          <div><dt>Legal form</dt><dd>Joint stock company</dd></div>
+          <div><dt>Established</dt><dd>January 2025</dd></div>
+        </dl>
       </div>
     </section>
 
-    <section class="section" id="services" aria-labelledby="services-title">
-      <div class="container split">
-        <h2 class="section__title" id="services-title">What we do</h2>
-        <dl class="rows">
-          <div class="rows__item">
+    <!-- ===== Who we are ===== -->
+    <section class="section section--dark about" id="company" aria-labelledby="about-title">
+      <div class="container">
+        <div class="kicker" aria-hidden="true"><span class="tile"></span><span class="kicker__rule"></span></div>
+        <div class="about__grid">
+          <h2 class="label" id="about-title">Who we are</h2>
+          <p class="statement" data-words>MUP Trading is a Giza-based joint stock company, founded in 2025 to give quality medicines a clear, compliant route to Egyptian patients — from the manufacturer’s dock to the pharmacy shelf.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== What we do ===== -->
+    <section class="section section--light" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="kicker kicker--light" aria-hidden="true"><span class="tile"></span><span class="kicker__rule"></span></div>
+        <h2 class="h2" id="services-title">What we do</h2>
+
+        <dl class="services">
+          <div class="service">
             <dt>Trading</dt>
             <dd>Wholesale and retail supply of medicines, medical supplies and healthcare products.</dd>
           </div>
-          <div class="rows__item">
+          <div class="service">
             <dt>Import and export</dt>
             <dd>Sourcing from qualified international manufacturers and bringing their products to market in Egypt.</dd>
           </div>
-          <div class="rows__item">
+          <div class="service">
             <dt>Product registration</dt>
             <dd>Preparing dossiers and securing registrations and approvals with the Egyptian authorities.</dd>
           </div>
-          <div class="rows__item">
+          <div class="service">
             <dt>Contract manufacturing</dt>
             <dd>Producing our formulations with licensed third-party facilities, under our quality oversight.</dd>
           </div>
-          <div class="rows__item">
+          <div class="service">
             <dt>Marketing and distribution</dt>
             <dd>Promoting and delivering products, our own and our partners’, to pharmacies, hospitals and distributors.</dd>
           </div>
@@ -105,37 +143,81 @@
       </div>
     </section>
 
-    <section class="section section--white" id="products" aria-labelledby="products-title">
-      <div class="container split">
-        <h2 class="section__title" id="products-title">What we supply</h2>
-        <ul class="supply" role="list">
-          <li>Human medicines</li>
-          <li>Supplements</li>
-          <li>Cosmetics</li>
-          <li>Medical devices</li>
-          <li>Veterinary products</li>
-          <li>Disinfectants</li>
-        </ul>
+    <!-- ===== What we supply ===== -->
+    <section class="section section--dark supply" id="products" aria-labelledby="products-title">
+      <div class="container">
+        <div class="kicker" aria-hidden="true"><span class="tile"></span><span class="kicker__rule"></span></div>
+        <h2 class="h2" id="products-title">What we supply</h2>
+      </div>
+
+      <div class="marquee">
+        <div class="marquee__row">
+          <div class="marquee__inner">
+            <ul class="marquee__track" role="list">
+              <li>Human medicines</li>
+              <li>Supplements</li>
+              <li>Cosmetics</li>
+              <li>Medical devices</li>
+              <li>Veterinary products</li>
+              <li>Disinfectants</li>
+            </ul>
+            <ul class="marquee__track marquee__copy" aria-hidden="true">
+              <li>Human medicines</li>
+              <li>Supplements</li>
+              <li>Cosmetics</li>
+              <li>Medical devices</li>
+              <li>Veterinary products</li>
+              <li>Disinfectants</li>
+            </ul>
+          </div>
+        </div>
+        <div class="marquee__row marquee__row--outline" aria-hidden="true">
+          <div class="marquee__inner">
+            <ul class="marquee__track">
+              <li>Medical devices</li>
+              <li>Disinfectants</li>
+              <li>Human medicines</li>
+              <li>Veterinary products</li>
+              <li>Supplements</li>
+              <li>Cosmetics</li>
+            </ul>
+            <ul class="marquee__track">
+              <li>Medical devices</li>
+              <li>Disinfectants</li>
+              <li>Human medicines</li>
+              <li>Veterinary products</li>
+              <li>Supplements</li>
+              <li>Cosmetics</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="process" aria-labelledby="process-title">
-      <div class="container split">
-        <h2 class="section__title" id="process-title">How a product reaches the shelf</h2>
+    <!-- ===== Process ===== -->
+    <section class="section section--light process" id="process" aria-labelledby="process-title">
+      <div class="container">
+        <div class="kicker kicker--light" aria-hidden="true"><span class="tile"></span><span class="kicker__rule"></span></div>
+        <h2 class="h2" id="process-title">How a product reaches the shelf</h2>
+
         <ol class="steps" role="list">
-          <li>
+          <li class="step">
+            <span class="step__num" aria-hidden="true">1</span>
             <h3>Source</h3>
             <p>We qualify manufacturers in Egypt and abroad.</p>
           </li>
-          <li>
+          <li class="step">
+            <span class="step__num" aria-hidden="true">2</span>
             <h3>Register</h3>
             <p>We file the dossier and secure approval.</p>
           </li>
-          <li>
+          <li class="step">
+            <span class="step__num" aria-hidden="true">3</span>
             <h3>Produce</h3>
             <p>We import, or manufacture under contract.</p>
           </li>
-          <li>
+          <li class="step">
+            <span class="step__num" aria-hidden="true">4</span>
             <h3>Deliver</h3>
             <p>We distribute to pharmacies and hospitals.</p>
           </li>
@@ -143,30 +225,42 @@
       </div>
     </section>
 
-    <section class="section" id="details" aria-labelledby="details-title">
-      <div class="container split">
-        <div>
-          <h2 class="section__title" id="details-title">Company details</h2>
-          <p class="section__note">As recorded in the Egyptian Commercial Register.</p>
+    <!-- ===== Company details ===== -->
+    <section class="section section--light details" id="details" aria-labelledby="details-title">
+      <div class="container details__grid">
+        <div class="details__intro">
+          <div class="kicker kicker--light" aria-hidden="true"><span class="tile"></span><span class="kicker__rule"></span></div>
+          <h2 class="h2" id="details-title">Company details</h2>
+          <p class="details__note">As recorded in the Egyptian Commercial Register.</p>
         </div>
-        <dl class="facts">
-          <div><dt>Legal form</dt><dd>Joint stock company</dd></div>
-          <div><dt>Governing law</dt><dd>Law No. 159 of 1981</dd></div>
-          <div><dt>Commercial register</dt><dd>No. 44123, Investment Office, 6th of October</dd></div>
-          <div><dt>Headquarters</dt><dd>Giza, Egypt</dd></div>
-          <div><dt>Authorized capital</dt><dd>EGP 10,000,000</dd></div>
-          <div><dt>Issued capital</dt><dd>EGP 5,000,000</dd></div>
-          <div><dt>Established</dt><dd>January 2025</dd></div>
-          <div><dt>Company term</dt><dd>25 years, to 2050</dd></div>
-        </dl>
+
+        <div class="register">
+          <span class="register__mark mark" aria-hidden="true">
+            <span class="mark__face"><span class="mark__mup">MUP</span><span class="mark__trading">Trading</span></span>
+          </span>
+          <dl class="register__list">
+            <div><dt>Legal form</dt><dd>Joint stock company</dd></div>
+            <div><dt>Governing law</dt><dd>Law No. 159 of 1981</dd></div>
+            <div><dt>Commercial register</dt><dd>No. 44123, Investment Office, 6th of October</dd></div>
+            <div><dt>Headquarters</dt><dd>Giza, Egypt</dd></div>
+            <div><dt>Authorized capital</dt><dd>EGP 10,000,000</dd></div>
+            <div><dt>Issued capital</dt><dd>EGP 5,000,000</dd></div>
+            <div><dt>Established</dt><dd>January 2025</dd></div>
+            <div><dt>Company term</dt><dd>25 years, to 2050</dd></div>
+          </dl>
+        </div>
       </div>
     </section>
 
-    <section class="section section--mist" id="contact" aria-labelledby="contact-title">
-      <div class="container split">
+    <!-- ===== Contact ===== -->
+    <section class="section section--dark contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact__glow" aria-hidden="true"></div>
+      <div class="container contact__grid">
         <div class="contact__intro">
+          <div class="kicker" aria-hidden="true"><span class="tile"></span><span class="kicker__rule"></span></div>
           <h2 class="contact__title" id="contact-title">Talk to our team</h2>
-          <p>Manufacturers looking for an Egyptian partner, and pharmacies, hospitals or distributors looking for supply — tell us what you need.</p>
+          <p class="contact__text">Manufacturers looking for an Egyptian partner, and pharmacies, hospitals or distributors looking for supply — tell us what you need.</p>
+
           <!-- Placeholders: replace the bracketed values with the real contact details -->
           <address class="contact__details">
             <span>[STREET ADDRESS], Giza, Egypt</span>
@@ -181,8 +275,8 @@
             1. Set action="" to your form endpoint, e.g. a Formspree URL
                (https://formspree.io/f/xxxxxxx) or your own server script.
             2. Keep method="post".
-            3. On Netlify you can instead add the attribute data-netlify="true"
-               and set action="/thank-you" or similar.
+            3. On Netlify you can instead add data-netlify="true" and name="inquiry"
+               to this tag, and set action to a thank-you page.
           While action is "#", main.js validates the form but does not send it,
           and tells the visitor that the message was not sent.
         -->
@@ -214,31 +308,34 @@
             </select>
             <p class="field__error" id="topic-error" hidden></p>
           </div>
-          <div class="field">
+          <div class="field field--full">
             <label for="message">How can we help?</label>
             <textarea id="message" name="message" rows="5" required aria-describedby="message-error"></textarea>
             <p class="field__error" id="message-error" hidden></p>
           </div>
-          <div class="form__actions">
-            <button class="button" type="submit">Send inquiry</button>
+          <div class="form__footer">
+            <button class="btn btn--accent" type="submit">Send inquiry</button>
+            <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
           </div>
-          <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container site-footer__inner">
-      <p>© 2026 MUP Trading, Giza, Egypt</p>
-      <nav aria-label="Footer">
-        <ul>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#company">Company</a></li>
-          <li><a href="#contact">Contact us</a></li>
-        </ul>
-      </nav>
+    <div class="container">
+      <div class="site-footer__top">
+        <p>© 2026 MUP Trading, Giza, Egypt</p>
+        <nav aria-label="Footer">
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#company">Company</a></li>
+            <li><a href="#contact">Contact us</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="site-footer__wordmark" aria-hidden="true">MUP Trading</p>
     </div>
   </footer>
 </body>

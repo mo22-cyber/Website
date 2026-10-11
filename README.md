@@ -6,7 +6,7 @@ A single-page marketing site for MUP Trading, built as plain static files. There
 |---|---|
 | `index.html` | The page: content, meta tags, favicon |
 | `styles.css` | All styles, including the CSS logo mark and the animations |
-| `main.js` | Scroll reveals, header state and contact form validation |
+| `main.js` | Mobile menu, scroll reveals, header state and contact form validation |
 | `og-image.png` | 1200 × 630 preview image for link sharing |
 
 ## Preview locally
@@ -54,8 +54,20 @@ All the site needs is the files in this folder.
 
 After deploying, replace `[SITE URL]` so link previews show the image.
 
-## Accessibility and motion
+## Design, accessibility and motion
 
-- The hero oval opens on load and sections fade in as they scroll into view.
-- All motion is turned off for visitors who set *reduce motion* in their system settings.
-- Without JavaScript, all content stays visible.
+- **Look:** dark and premium. The page runs on a deep teal-black base with light bands for the detailed sections, set in Geist and Geist Mono (Google Fonts).
+- **Brand colours:** orange is the action colour. Teal and orange also form the logo's corner gradient.
+- **On load:** the headline rises in word by word, and the logo emblem springs into place with a slowly turning glow and orbit.
+- **On scroll:**
+  - sections fade up;
+  - the "Who we are" statement brightens line by line (in browsers that support scroll-driven animations);
+  - the process line draws across the four steps;
+  - the product names scroll in a slow marquee, which pauses on hover.
+- **Reduced motion:** all motion is turned off for visitors who set *reduce motion* in their system settings. The marquee then becomes a static list.
+- **Without JavaScript:** all content stays visible.
+- **Accessibility:**
+  - text contrast is at least 4.5:1;
+  - keyboard focus is visible;
+  - tap targets are at least 44px;
+  - the layout is responsive down to 360px wide.
