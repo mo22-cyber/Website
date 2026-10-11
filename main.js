@@ -70,12 +70,16 @@
   /* ----- Scroll reveals ----- */
 
   var singles = document.querySelectorAll(
-    ".kicker, .h2, .label, .details__note, .register, .contact__title, .contact__text, .contact__details, .form"
+    ".kicker, .h2, .details__note, .register, .contact__title, .contact__text, .contact__details, .form, .site-footer__wordmark"
   );
   var groups = document.querySelectorAll(".services, .steps, .register__list");
 
   singles.forEach(function (el) { el.setAttribute("data-reveal", ""); });
-  if (statement && !(scrollTimeline && !reduceMotion)) statement.setAttribute("data-reveal", "");
+  // Without scroll timelines the statement fades up as a block. The reveal sits on the
+  // wrapper because the statement is an inline run-in on desktop (transforms skip inline boxes).
+  if (statement && !(scrollTimeline && !reduceMotion)) {
+    (statement.closest(".about__grid") || statement).setAttribute("data-reveal", "");
+  }
 
   groups.forEach(function (group) {
     Array.prototype.forEach.call(group.children, function (item, i) {
@@ -99,6 +103,27 @@
     }, { rootMargin: "0px 0px -10% 0px", threshold: 0.12 });
 
     targets.forEach(function (el) { revealer.observe(el); });
+  }
+
+  /* ----- Marquee: pause button, and pause while off-screen ----- */
+
+  var supply = document.querySelector(".supply");
+  var marquee = document.querySelector(".marquee");
+  var marqueeToggle = document.querySelector(".marquee-toggle");
+
+  if (supply && marquee && marqueeToggle && !reduceMotion) {
+    marqueeToggle.hidden = false;
+    marqueeToggle.addEventListener("click", function () {
+      var paused = marqueeToggle.getAttribute("aria-pressed") !== "true";
+      marqueeToggle.setAttribute("aria-pressed", String(paused));
+      supply.classList.toggle("is-paused", paused);
+    });
+
+    if (hasIO) {
+      new IntersectionObserver(function (entries) {
+        marquee.classList.toggle("is-offscreen", !entries[0].isIntersecting);
+      }).observe(marquee);
+    }
   }
 
   /* ----- Contact form validation ----- */

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MUP Trading | Pharmaceutical import, registration and distribution in Egypt</title>
   <meta name="description" content="MUP Trading is a Giza-based pharmaceutical trading company. We import, register and distribute pharmaceutical and healthcare products for manufacturers, pharmacies and hospitals across Egypt.">
-  <meta name="theme-color" content="#0A1517">
-  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#F6F7F5">
+  <meta name="color-scheme" content="light">
 
   <!-- Open Graph. Replace [SITE URL] with the live domain, e.g. https://www.example.com -->
   <meta property="og:type" content="website">
@@ -43,7 +43,7 @@
       </a>
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span class="menu-toggle__label">Menu</span>
+        <span>Menu</span>
         <span class="menu-toggle__icon" aria-hidden="true"><span></span><span></span></span>
       </button>
 
@@ -76,12 +76,20 @@
           </h1>
           <p class="hero__sub">We import, register and distribute pharmaceutical and healthcare products for manufacturers, pharmacies and hospitals.</p>
           <div class="hero__actions">
-            <a class="btn btn--accent" href="#contact">Start a partnership</a>
+            <a class="btn btn--accent btn--large" href="#contact">Start a partnership</a>
           </div>
         </div>
 
+        <!-- The logo mounted on an engraved dial; major ticks follow the logo's corner colours -->
         <div class="emblem" aria-hidden="true">
-          <div class="emblem__halo"></div>
+          <div class="emblem__shadow"></div>
+          <svg class="emblem__dial" viewBox="0 0 400 400" focusable="false">
+            <circle class="dial__ring" cx="200" cy="200" r="196"/>
+            <circle class="dial__minor" cx="200" cy="200" r="190" pathLength="360"/>
+            <circle class="dial__major dial__major--orange" cx="200" cy="200" r="187" pathLength="360"/>
+            <circle class="dial__major dial__major--teal" cx="200" cy="200" r="187" pathLength="360"/>
+            <circle class="dial__track" cx="200" cy="200" r="164"/>
+          </svg>
           <div class="emblem__orbit"><span class="emblem__satellite"></span></div>
           <div class="emblem__tile">
             <div class="emblem__face">
@@ -102,7 +110,7 @@
     </section>
 
     <!-- ===== Who we are ===== -->
-    <section class="section section--dark about" id="company" aria-labelledby="about-title">
+    <section class="section section--white about" id="company" aria-labelledby="about-title">
       <div class="container">
         <div class="kicker" aria-hidden="true"><span class="tile"></span><span class="kicker__rule"></span></div>
         <div class="about__grid">
@@ -113,9 +121,9 @@
     </section>
 
     <!-- ===== What we do ===== -->
-    <section class="section section--light" id="services" aria-labelledby="services-title">
+    <section class="section section--porcelain" id="services" aria-labelledby="services-title">
       <div class="container">
-        <div class="kicker kicker--light" aria-hidden="true"><span class="tile"></span><span class="kicker__rule"></span></div>
+        <div class="kicker" aria-hidden="true"><span class="tile"></span><span class="kicker__rule"></span></div>
         <h2 class="h2" id="services-title">What we do</h2>
 
         <dl class="services">
@@ -143,14 +151,20 @@
       </div>
     </section>
 
-    <!-- ===== What we supply ===== -->
-    <section class="section section--dark supply" id="products" aria-labelledby="products-title">
+    <!-- ===== What we supply: the one colour band ===== -->
+    <section class="section section--band supply" id="products" aria-labelledby="products-title">
       <div class="container">
-        <div class="kicker" aria-hidden="true"><span class="tile"></span><span class="kicker__rule"></span></div>
-        <h2 class="h2" id="products-title">What we supply</h2>
+        <div class="kicker kicker--band" aria-hidden="true"><span class="tile"></span><span class="kicker__rule"></span></div>
+        <div class="supply__head">
+          <h2 class="h2" id="products-title">What we supply</h2>
+          <button class="marquee-toggle" type="button" aria-pressed="false" aria-label="Pause animation" hidden>
+            <span class="marquee-toggle__icon" aria-hidden="true"></span>
+          </button>
+        </div>
       </div>
 
       <div class="marquee">
+        <div class="marquee__rail marquee__rail--top" aria-hidden="true"></div>
         <div class="marquee__row">
           <div class="marquee__inner">
             <ul class="marquee__track" role="list">
@@ -171,33 +185,14 @@
             </ul>
           </div>
         </div>
-        <div class="marquee__row marquee__row--outline" aria-hidden="true">
-          <div class="marquee__inner">
-            <ul class="marquee__track">
-              <li>Medical devices</li>
-              <li>Disinfectants</li>
-              <li>Human medicines</li>
-              <li>Veterinary products</li>
-              <li>Supplements</li>
-              <li>Cosmetics</li>
-            </ul>
-            <ul class="marquee__track">
-              <li>Medical devices</li>
-              <li>Disinfectants</li>
-              <li>Human medicines</li>
-              <li>Veterinary products</li>
-              <li>Supplements</li>
-              <li>Cosmetics</li>
-            </ul>
-          </div>
-        </div>
+        <div class="marquee__rail marquee__rail--bottom" aria-hidden="true"></div>
       </div>
     </section>
 
     <!-- ===== Process ===== -->
-    <section class="section section--light process" id="process" aria-labelledby="process-title">
+    <section class="section section--white process" id="process" aria-labelledby="process-title">
       <div class="container">
-        <div class="kicker kicker--light" aria-hidden="true"><span class="tile"></span><span class="kicker__rule"></span></div>
+        <div class="kicker" aria-hidden="true"><span class="tile"></span><span class="kicker__rule"></span></div>
         <h2 class="h2" id="process-title">How a product reaches the shelf</h2>
 
         <ol class="steps" role="list">
@@ -226,16 +221,20 @@
     </section>
 
     <!-- ===== Company details ===== -->
-    <section class="section section--light details" id="details" aria-labelledby="details-title">
-      <div class="container details__grid">
-        <div class="details__intro">
-          <div class="kicker kicker--light" aria-hidden="true"><span class="tile"></span><span class="kicker__rule"></span></div>
+    <section class="section section--porcelain details" id="details" aria-labelledby="details-title">
+      <div class="container">
+        <div class="kicker" aria-hidden="true"><span class="tile"></span><span class="kicker__rule"></span></div>
+        <div class="details__head">
           <h2 class="h2" id="details-title">Company details</h2>
           <p class="details__note">As recorded in the Egyptian Commercial Register.</p>
         </div>
 
         <div class="register">
-          <span class="register__mark mark" aria-hidden="true">
+          <span class="bracket bracket--tl" aria-hidden="true"></span>
+          <span class="bracket bracket--tr" aria-hidden="true"></span>
+          <span class="bracket bracket--br" aria-hidden="true"></span>
+          <span class="bracket bracket--bl" aria-hidden="true"></span>
+          <span class="register__seal mark" aria-hidden="true">
             <span class="mark__face"><span class="mark__mup">MUP</span><span class="mark__trading">Trading</span></span>
           </span>
           <dl class="register__list">
@@ -253,12 +252,17 @@
     </section>
 
     <!-- ===== Contact ===== -->
-    <section class="section section--dark contact" id="contact" aria-labelledby="contact-title">
-      <div class="contact__glow" aria-hidden="true"></div>
+    <section class="section section--mist contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact__wash" aria-hidden="true"></div>
       <div class="container contact__grid">
         <div class="contact__intro">
           <div class="kicker" aria-hidden="true"><span class="tile"></span><span class="kicker__rule"></span></div>
-          <h2 class="contact__title" id="contact-title">Talk to our team</h2>
+          <h2 class="contact__title" id="contact-title">
+            <span class="word"><span>Talk</span></span>
+            <span class="word"><span>to</span></span>
+            <span class="word"><span>our</span></span>
+            <span class="word"><span>team</span></span>
+          </h2>
           <p class="contact__text">Manufacturers looking for an Egyptian partner, and pharmacies, hospitals or distributors looking for supply — tell us what you need.</p>
 
           <!-- Placeholders: replace the bracketed values with the real contact details -->
