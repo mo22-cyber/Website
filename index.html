@@ -17,7 +17,7 @@
   <meta property="og:image" content="[SITE URL]/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="The MUP Trading logo">
+  <meta property="og:image:alt" content="MUP Trading logo beside the headline: Medicines, registered and delivered across Egypt.">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Favicon: the logo mark as inline SVG -->
@@ -284,25 +284,25 @@
           While action is "#", main.js validates the form but does not send it,
           and tells the visitor that the message was not sent.
         -->
-        <form class="form" id="inquiry-form" action="#" method="post" novalidate>
+        <form class="form" id="inquiry-form" action="#" method="post">
           <div class="field">
             <label for="name">Full name</label>
-            <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error">
+            <input id="name" name="name" aria-invalid="false" type="text" autocomplete="name" required aria-describedby="name-error">
             <p class="field__error" id="name-error" hidden></p>
           </div>
           <div class="field">
             <label for="company-name">Company</label>
-            <input id="company-name" name="company" type="text" autocomplete="organization" required aria-describedby="company-name-error">
+            <input id="company-name" name="company" aria-invalid="false" type="text" autocomplete="organization" required aria-describedby="company-name-error">
             <p class="field__error" id="company-name-error" hidden></p>
           </div>
           <div class="field">
             <label for="email">Work email</label>
-            <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="email-error">
+            <input id="email" name="email" aria-invalid="false" type="email" autocomplete="email" inputmode="email" required aria-describedby="email-error">
             <p class="field__error" id="email-error" hidden></p>
           </div>
           <div class="field">
             <label for="topic">Topic</label>
-            <select id="topic" name="topic" required aria-describedby="topic-error">
+            <select id="topic" name="topic" aria-invalid="false" required aria-describedby="topic-error">
               <option value="">Choose a topic</option>
               <option>Distribution partnership</option>
               <option>Product registration</option>
@@ -314,12 +314,13 @@
           </div>
           <div class="field field--full">
             <label for="message">How can we help?</label>
-            <textarea id="message" name="message" rows="5" required aria-describedby="message-error"></textarea>
+            <textarea id="message" name="message" aria-invalid="false" rows="5" required aria-describedby="message-error"></textarea>
             <p class="field__error" id="message-error" hidden></p>
           </div>
           <div class="form__footer">
             <button class="btn btn--accent" type="submit">Send inquiry</button>
             <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+            <noscript><p class="form__status">This form is not connected yet, so your message will not be sent. Please email us at [EMAIL ADDRESS] for now.</p></noscript>
           </div>
         </form>
       </div>

@@ -56,16 +56,17 @@ After deploying, replace `[SITE URL]` so link previews show the image.
 
 ## Design, accessibility and motion
 
-- **Look:** dark and premium. The page runs on a deep teal-black base with light bands for the detailed sections, set in Geist and Geist Mono (Google Fonts).
-- **Brand colours:** orange is the action colour. Teal and orange also form the logo's corner gradient.
-- **On load:** the headline rises in word by word, and the logo emblem springs into place with a slowly turning glow and orbit.
+- **Look:** light and premium. The page sits on a porcelain base (`#F6F7F5`) with white and mist sections. "What we supply" is the one deep teal band. Type is Geist and Geist Mono (Google Fonts).
+- **Brand colours:** orange is the action colour. Teal and orange appear where the logo puts them: the logo corners, the dial ticks in the hero, the service markers and the register brackets.
+- **On load:** the headline rises in word by word. The logo tile settles onto an engraved dial, and an orange marker makes one sweep around it and stops at top-left. Nothing in the hero loops.
 - **On scroll:**
   - sections fade up;
   - the "Who we are" statement brightens line by line (in browsers that support scroll-driven animations);
   - the process line draws across the four steps;
-  - the product names scroll in a slow marquee, which pauses on hover.
-- **Reduced motion:** all motion is turned off for visitors who set *reduce motion* in their system settings. The marquee then becomes a static list.
-- **Without JavaScript:** all content stays visible.
+  - the corner brackets on the company details card spring into place.
+- **Product marquee:** the product names scroll slowly across the teal band. It has a *Pause animation* button, and it also pauses on hover and when it is off-screen.
+- **Reduced motion:** all motion is turned off for visitors who set *reduce motion* in their system settings. The marquee becomes a static list, and the pause button is hidden.
+- **Without JavaScript:** all content stays visible, the marquee is a static list, and the form falls back to the browser's own required-field checks.
 - **Accessibility:**
   - text contrast is at least 4.5:1;
   - keyboard focus is visible;

@@ -22,10 +22,15 @@
     header.querySelectorAll(".site-nav a").forEach(function (link) {
       link.addEventListener("click", function () { setMenu(false); });
     });
+    // Close when focus leaves the header, so the open panel never hides the focused control
+    header.addEventListener("focusout", function (event) {
+      if (header.classList.contains("is-open") && !header.contains(event.relatedTarget)) setMenu(false);
+    });
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape" && header.classList.contains("is-open")) {
+        var inside = header.contains(document.activeElement);
         setMenu(false);
-        toggle.focus();
+        if (inside) toggle.focus();
       }
     });
     window.matchMedia("(min-width: 820px)").addEventListener("change", function (mq) {
@@ -70,7 +75,7 @@
   /* ----- Scroll reveals ----- */
 
   var singles = document.querySelectorAll(
-    ".kicker, .h2, .details__note, .register, .contact__title, .contact__text, .contact__details, .form, .site-footer__wordmark"
+    ".kicker, .h2, .details__note, .register, .contact__title, .contact__text, .contact__details, .form"
   );
   var groups = document.querySelectorAll(".services, .steps, .register__list");
 
@@ -88,7 +93,24 @@
     });
   });
 
-  var targets = document.querySelectorAll("[data-reveal]");
+  // The footer wordmark sits at the very bottom of the page, partly cropped, so it can never
+  // clear the shared observer's margins; it gets its own observer with no margins.
+  var wordmark = document.querySelector(".site-footer__wordmark");
+  if (wordmark) {
+    wordmark.setAttribute("data-reveal", "");
+    if (reduceMotion || !hasIO) {
+      wordmark.classList.add("is-visible");
+    } else {
+      new IntersectionObserver(function (entries, observer) {
+        if (entries[0].isIntersecting) {
+          wordmark.classList.add("is-visible");
+          observer.disconnect();
+        }
+      }).observe(wordmark);
+    }
+  }
+
+  var targets = document.querySelectorAll("[data-reveal]:not(.site-footer__wordmark)");
 
   if (reduceMotion || !hasIO) {
     targets.forEach(function (el) { el.classList.add("is-visible"); });
@@ -130,6 +152,7 @@
 
   var form = document.getElementById("inquiry-form");
   if (!form) return;
+  form.noValidate = true;
 
   var status = document.getElementById("form-status");
   var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -137,7 +160,6 @@
   var rules = {
     name: function (v) {
       if (!v) return "Please enter your full name.";
-      if (v.length < 2) return "Please enter your full name, not just an initial.";
     },
     company: function (v) {
       if (!v) return "Please enter the name of your company or organisation.";
@@ -151,7 +173,6 @@
     },
     message: function (v) {
       if (!v) return "Please tell us briefly what you need.";
-      if (v.length < 20) return "Please add a little more detail, at least 20 characters.";
     }
   };
 
@@ -164,7 +185,7 @@
       error.hidden = false;
       return false;
     }
-    field.removeAttribute("aria-invalid");
+    field.setAttribute("aria-invalid", "false");
     error.textContent = "";
     error.hidden = true;
     return true;
@@ -201,9 +222,12 @@
     var action = form.getAttribute("action");
     if (!action || action === "#") {
       event.preventDefault();
-      status.textContent =
-        "Thank you. This form is not connected yet, so your message has not been sent. " +
-        "Please email us at [EMAIL ADDRESS] for now.";
+      // Set on a later tick so a repeat submit is announced again
+      setTimeout(function () {
+        status.textContent =
+          "Thank you. This form is not connected yet, so your message has not been sent. " +
+          "Please email us at [EMAIL ADDRESS] for now.";
+      }, 100);
     }
   });
 })();
