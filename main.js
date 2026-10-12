@@ -75,9 +75,9 @@
   /* ----- Scroll reveals ----- */
 
   var singles = document.querySelectorAll(
-    ".kicker, .h2, .details__note, .register, .contact__title, .contact__text, .contact__details, .form"
+    ".js-reveal"
   );
-  var groups = document.querySelectorAll(".services, .steps, .register__list");
+  var groups = document.querySelectorAll(".js-stagger");
 
   singles.forEach(function (el) { el.setAttribute("data-reveal", ""); });
   // Without scroll timelines the statement fades up as a block. The reveal sits on the

@@ -6,9 +6,9 @@ A single-page marketing site for MUP Trading, built as plain static files. There
 |---|---|
 | `index.html` | The page: content, meta tags, favicon |
 | `styles.css` | All styles, including the CSS logo mark and the animations |
-| `main.js` | Mobile menu, scroll reveals, header state and contact form validation |
+| `main.js` | Mobile menu, scroll reveals and contact form validation |
 | `og-image.png` | 1200 × 630 preview image for link sharing |
-| `fonts/` | Geist and Geist Mono, self-hosted (SIL Open Font License, see `fonts/OFL.txt`) |
+| `fonts/` | Plus Jakarta Sans, self-hosted (SIL Open Font License, see `fonts/OFL.txt`) |
 
 ## Preview locally
 
@@ -57,17 +57,12 @@ After deploying, replace `[SITE URL]` so link previews show the image.
 
 ## Design, accessibility and motion
 
-- **Look:** light and premium. The page sits on a porcelain base (`#F6F7F5`) with white and mist sections. "What we supply" is the one deep teal band. Type is Geist and Geist Mono, self-hosted from `fonts/` (no third-party font requests).
-- **Brand colours:** orange is the action colour. Teal and orange appear where the logo puts them: the logo corners, the dial ticks in the hero, the service markers and the register brackets.
-- **On load:** the headline rises in word by word. The logo tile settles onto an engraved dial, and an orange marker makes one sweep around it and stops at top-left. Nothing in the hero loops.
-- **On scroll:**
-  - sections fade up;
-  - the "Who we are" statement brightens line by line (in browsers that support scroll-driven animations);
-  - the process line draws across the four steps;
-  - the corner brackets on the company details card spring into place.
-- **Product marquee:** the product names scroll slowly across the teal band. It has a *Pause animation* button, and it also pauses on hover and when it is off-screen.
-- **Reduced motion:** all motion is turned off for visitors who set *reduce motion* in their system settings. The marquee becomes a static list, and the pause button is hidden.
-- **Without JavaScript:** all content stays visible, the marquee is a static list, and the form falls back to the browser's own required-field checks.
+- **Look:** clean and professional. The page is near-white, with light teal-grey bands for alternating sections and a deep teal footer. Type is Plus Jakarta Sans, self-hosted from `fonts/`.
+- **Colour:** deep teal (`#23626A`) is used for buttons, step numbers and the contact panel. Orange from the logo appears only as small accents: the short rule above each section title and the service markers.
+- **Shapes:** one soft radius throughout (8-12px) for buttons, cards, fields and panels.
+- **Motion:** kept quiet. The hero fades in on load, sections fade up gently as they scroll into view, and service cards lift slightly on hover.
+- **Reduced motion:** all motion is turned off for visitors who set *reduce motion* in their system settings.
+- **Without JavaScript:** all content stays visible, and the form falls back to the browser's own required-field checks.
 - **Accessibility:**
   - text contrast is at least 4.5:1;
   - keyboard focus is visible;
