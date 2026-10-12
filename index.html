@@ -78,22 +78,29 @@
           </div>
         </div>
 
-        <!-- The logo mounted on an engraved dial; major ticks follow the logo's corner colours -->
-        <div class="emblem" aria-hidden="true">
-          <div class="emblem__shadow"></div>
-          <svg class="emblem__dial" viewBox="0 0 400 400" focusable="false">
-            <circle class="dial__ring" cx="200" cy="200" r="196"/>
-            <circle class="dial__minor" cx="200" cy="200" r="190" pathLength="360"/>
-            <circle class="dial__major dial__major--orange" cx="200" cy="200" r="187" pathLength="360"/>
-            <circle class="dial__major dial__major--teal" cx="200" cy="200" r="187" pathLength="360"/>
-            <circle class="dial__track" cx="200" cy="200" r="164"/>
-          </svg>
-          <div class="emblem__orbit"><span class="emblem__satellite"></span></div>
-          <div class="emblem__tile">
-            <div class="emblem__face">
-              <span class="emblem__mup">MUP</span>
-              <span class="emblem__trading">Trading</span>
+        <!-- The logo on an engraved dial (ticks follow the logo's corner colours), in a framed tray.
+             The two cards repeat facts from Company details -->
+        <div class="emblem-tray" aria-hidden="true">
+          <div class="emblem-tray__core">
+            <div class="emblem">
+              <div class="emblem__shadow"></div>
+              <svg class="emblem__dial" viewBox="0 0 400 400" focusable="false">
+                <circle class="dial__ring" cx="200" cy="200" r="196"/>
+                <circle class="dial__minor" cx="200" cy="200" r="190" pathLength="360"/>
+                <circle class="dial__major dial__major--orange" cx="200" cy="200" r="187" pathLength="360"/>
+                <circle class="dial__major dial__major--teal" cx="200" cy="200" r="187" pathLength="360"/>
+                <circle class="dial__track" cx="200" cy="200" r="164"/>
+              </svg>
+              <div class="emblem__orbit"><span class="emblem__satellite"></span></div>
+              <div class="emblem__tile">
+                <div class="emblem__face">
+                  <span class="emblem__mup">MUP</span>
+                  <span class="emblem__trading">Trading</span>
+                </div>
+              </div>
             </div>
+            <div class="chip chip--a"><span class="chip__label">Headquarters</span><span class="chip__value">Giza, Egypt</span></div>
+            <div class="chip chip--b"><span class="chip__label">Established</span><span class="chip__value">January 2025</span></div>
           </div>
         </div>
       </div>
