@@ -8,6 +8,7 @@ A single-page marketing site for MUP Trading, built as plain static files. There
 | `styles.css` | All styles, including the CSS logo mark and the animations |
 | `main.js` | Mobile menu, scroll reveals, header state and contact form validation |
 | `og-image.png` | 1200 × 630 preview image for link sharing |
+| `fonts/` | Geist and Geist Mono, self-hosted (SIL Open Font License, see `fonts/OFL.txt`) |
 
 ## Preview locally
 
@@ -50,13 +51,13 @@ All the site needs is the files in this folder.
 
 - **Netlify**: drag the folder onto app.netlify.com/drop, or connect the repository with no build command and `/` as the publish directory.
 - **GitHub Pages**: push to GitHub, open *Settings → Pages*, choose *Deploy from a branch*, and select the branch with the `/ (root)` folder.
-- **Any other host** (cPanel, S3, Cloudflare Pages): upload `index.html`, `styles.css`, `main.js` and `og-image.png` to the web root.
+- **Any other host** (cPanel, S3, Cloudflare Pages): upload `index.html`, `styles.css`, `main.js`, `og-image.png` and the `fonts/` folder to the web root.
 
 After deploying, replace `[SITE URL]` so link previews show the image.
 
 ## Design, accessibility and motion
 
-- **Look:** light and premium. The page sits on a porcelain base (`#F6F7F5`) with white and mist sections. "What we supply" is the one deep teal band. Type is Geist and Geist Mono (Google Fonts).
+- **Look:** light and premium. The page sits on a porcelain base (`#F6F7F5`) with white and mist sections. "What we supply" is the one deep teal band. Type is Geist and Geist Mono, self-hosted from `fonts/` (no third-party font requests).
 - **Brand colours:** orange is the action colour. Teal and orange appear where the logo puts them: the logo corners, the dial ticks in the hero, the service markers and the register brackets.
 - **On load:** the headline rises in word by word. The logo tile settles onto an engraved dial, and an orange marker makes one sweep around it and stops at top-left. Nothing in the hero loops.
 - **On scroll:**
