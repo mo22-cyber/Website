@@ -6,9 +6,10 @@ A single-page marketing site for MUP Trading, built as plain static files. There
 |---|---|
 | `index.html` | The page: content, meta tags, favicon |
 | `styles.css` | All styles, including the CSS logo mark and the animations |
-| `main.js` | Mobile menu, scroll reveals and contact form validation |
+| `main.js` | Mobile menu, service tabs, scroll reveals and contact form validation |
 | `og-image.png` | 1200 × 630 preview image for link sharing |
-| `fonts/` | Plus Jakarta Sans, self-hosted (SIL Open Font License, see `fonts/OFL.txt`) |
+| `fonts/` | Outfit, self-hosted (SIL Open Font License, see `fonts/OFL.txt`) |
+| `images/` | Your photos go here (see "Adding photos" below) |
 
 ## Preview locally
 
@@ -45,6 +46,24 @@ Once `action` is no longer `#`, `main.js` lets valid submissions go through norm
 
 The logo is rebuilt in CSS (`.mark` in `styles.css`), and the favicon is an inline SVG in `index.html`. If you get a vector logo file (`logo.svg`), you can swap it in for the `.mark` element in the header.
 
+## Adding photos
+
+The design has three photo spaces. Until you add photos, each one shows a labelled placeholder such as `[PHOTO: warehouse or distribution, 1600 × 1200]`.
+
+| Photo space | Suggested photo | Size |
+|---|---|---|
+| Hero, large | Your warehouse, cold chain or delivery fleet | 1600 × 1200 |
+| Hero, small | Your products on a pharmacy shelf | 900 × 1100 |
+| What we do | Product handling, quality checks or registration work | 1400 × 1000 |
+
+To add one:
+1. Put the photo in an `images/` folder.
+2. In `index.html`, find the matching `<!-- PHOTO SLOT ... -->` comment.
+3. Replace the `<span class="photo__label">…</span>` inside the `<figure>` with the `<img>` line shown in that comment, and write a short `alt` description.
+4. Remove `aria-hidden="true"` from that `<figure>`.
+
+Photos are cropped to fit their frames, so any reasonably large landscape (or, for the small hero photo, portrait) image works.
+
 ## Deploy
 
 All the site needs is the files in this folder.
@@ -57,14 +76,27 @@ After deploying, replace `[SITE URL]` so link previews show the image.
 
 ## Design, accessibility and motion
 
-- **Look:** clean and professional. The page is near-white, with light teal-grey bands for alternating sections and a deep teal footer. Type is Plus Jakarta Sans, self-hosted from `fonts/`.
-- **Colour:** deep teal (`#23626A`) is used for buttons, step numbers and the contact panel. Orange from the logo appears only as small accents: the short rule above each section title and the service markers.
-- **Shapes:** one soft radius throughout (8-12px) for buttons, cards, fields and panels.
-- **Motion:** kept quiet. The hero fades in on load, sections fade up gently as they scroll into view, and service cards lift slightly on hover.
+- **Look:** light, professional and premium. The page sits on a cool off-white base and uses Outfit, self-hosted from `fonts/`.
+- **Colour:** deep teal (`#1F5C63`) is the one accent, used for buttons, the "Human medicines" tile and the Contact section, the page's single colour block. Orange from the logo appears only in small marks.
+- **Shapes:** pill shapes for buttons and tabs, 20px corners for cards and photos, 12px for form fields.
+- **Sections, each with its own layout:**
+  - a split hero, with the headline beside a two-photo composition and the logo seal;
+  - a large editorial statement for "Who we are";
+  - a service explorer: pick a service on the left to see it on the right (a plain list without JavaScript);
+  - a bento grid of product categories;
+  - the process steps beside a sticky heading, with a line that fills as you scroll;
+  - three featured company facts above the rest of the register details;
+  - the contact form on a teal background.
+- **Motion:**
+  - the hero arrives in sequence and sections fade up into view;
+  - the service panel fades when you switch tabs;
+  - the process line follows your scroll, in browsers that support it;
+  - cards lift slightly on hover.
 - **Reduced motion:** all motion is turned off for visitors who set *reduce motion* in their system settings.
-- **Without JavaScript:** all content stays visible, and the form falls back to the browser's own required-field checks.
+- **Without JavaScript:** all content stays visible, including every service, and the form falls back to the browser's own required-field checks.
 - **Accessibility:**
   - text contrast is at least 4.5:1;
   - keyboard focus is visible;
+  - the service tabs work with the arrow keys;
   - tap targets are at least 44px;
   - the layout is responsive down to 360px wide.
